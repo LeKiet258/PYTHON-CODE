@@ -1,2 +1,2 @@
 # PYTHON-CODE
-Python code snippets
+This repo is for Python code snippets
