@@ -1,0 +1,67 @@
+1, estimator, transformer, predictor
+	a) Estimator
+	- Any object that can estimate some parameters based on a dataset is called an estimator (e.g., an imputer is an estimator)
+	- hàm bắt buộc: fit() - takes only a dataset as a parameter (or two for supervised learning algorithms; the second dataset contains the labels),
+Any other parameter (except dataset) needed to guide the estimation process is considered a hyperparameter (such as an imputer’s strategy)
+	
+	b) transformer
+	- Some estimators (such as an imputer) can also transform a dataset; these are called transformers.
+	- hàm bắt buộc: transform()
+	- hàm convenience: fit_transform()
+	
+	c) predictor
+	- some estimators are capable of making predictions, they are called predictors
+	- hàm bắt buộc: predict() - take in dataset
+	- có hàm score() để đo lường chất lượng dự đoán (supervised learning)
+	
+2, customized transformer
+	- implement 3 methods: 
+	+ fit(): return self
+	+ transform(): return a new df/np array
+	+ fit_transform(): get this free via TransformerMixin base class
+	- nên kế thừa cả class BaseEstimator để có 2 method get_params() & set_params()
+
+3, Feature scaling
+	- min-max scaling - MinMaxScaler: [0,1]. Nếu muốn range khác thì chỉnh tham số feature_range 
+	- standardization - StandardScaler: 
+	+ not bound values to a specific range -> not suitable for some algos like neural networks
+	+ less affected by outliers
+	
+	*NOTE: fit the scalers to the training data only, not to the full dataset 
+
+4, pipeline
+	- là 1 list of estimators, với estimator cuối cùng phải là transformer (tức phải có hàm fit_transform())
+	- pipeline.fit(): gọi từng transformer.fit_transform() trong pipeline lên dữ liệu. Sau khi n-1 bước, final_estimator.fit() sẽ dc gọi
+	- final estimator có method gì thì pipeline object cũng có tương tự những method đó
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
